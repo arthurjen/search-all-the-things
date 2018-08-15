@@ -1,0 +1,19 @@
+{
+  "name": "search-all-the-things",
+  "version": "1.0.0",
+  "description": "",
+  "main": "postcss.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arthurjen/search-all-the-things.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arthurjen/search-all-the-things/issues"
+  },
+  "homepage": "https://github.com/arthurjen/search-all-the-things#readme"
+}
