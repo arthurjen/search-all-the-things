@@ -1,7 +1,13 @@
 :local(.app) {
+  header {
+    height: 30px;
+    background: blue;
+  }
+
   h1 {
+    padding: 5px 20px;
     font-size: 1em;
-    color: blue;
+    color: white;
   }
 
   #display {
@@ -11,5 +17,10 @@
   ul {
     display: flex;
     flex-wrap: wrap;
+  }
+
+  main {
+    display: grid;
+    grid: 750px / 25% 1fr;
   }
 }

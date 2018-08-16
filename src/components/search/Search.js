@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import styles from './Search.css';
 import './Search.css';
 
 export default class Search extends Component {
@@ -27,7 +28,7 @@ export default class Search extends Component {
     const { sets } = this.props;
 
     return (
-      <form className="search-form" onSubmit={event => this.handleSubmit(event)}>
+      <form className={styles.cards} onSubmit={event => this.handleSubmit(event)}>
         <label>
           Name:
           <input name="name" value={name} onChange={this.handleChange}/>
