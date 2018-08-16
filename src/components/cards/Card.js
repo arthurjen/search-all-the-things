@@ -9,11 +9,11 @@ export default class Card extends Component {
 
   render() {
     const { card } = this.props;
-    const { imageUrl, name } = card;
+    const { imageUrl, name, setName } = card;
 
     return (
       <li>
-        <img src={imageUrl} alt={name}/>
+        <img src={imageUrl} alt={`${name}(${setName})`}/>
       </li>
     );
   }

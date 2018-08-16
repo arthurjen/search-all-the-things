@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Card from './Card.js';
+import styles from './Cards.css';
 export default class Cards extends Component {
 
   static propTypes = {
@@ -11,7 +12,7 @@ export default class Cards extends Component {
     const { cards } = this.props;
 
     return (
-      <ul>
+      <ul className={styles.cards}>
         {cards.map((card, i) => (
           <Card key={i} card={card}/>
         ))}

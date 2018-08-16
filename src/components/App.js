@@ -3,10 +3,11 @@ import Search from './search/Search.js';
 import Cards from './cards/Cards.js';
 import Paging from './paging/Paging.js';
 import styles from './App.css';
-import { search } from '../services/mtgApi.js';
+import { search, getSets } from '../services/mtgApi.js';
 
 class App extends Component {
   state = {
+    sets: [],
     query: '',
     cards: '',
     page: 1,
@@ -14,14 +15,26 @@ class App extends Component {
     totalCount: 0
   };
 
+  componentDidMount() {
+    getSets().then(_sets => {
+      const sets = _sets.map(set => {
+        return {
+          code: set.code,
+          name: set.name
+        };
+      }).sort();
+      this.setState({ sets });
+    });
+  }
+
   saveNewQuery = (query) => {
-    this.setState({ query }, () => {
+    const page = 1;
+    this.setState({ query, page }, () => {
       this.handleSearch();
     });
   };
 
   handleSearch = () => {
-    console.log(this.state);
     const { query, page, pageSize } = this.state;
     search(query, { page, pageSize })
       .then(([results, totalCount]) => {
@@ -39,7 +52,7 @@ class App extends Component {
 
   render() {
 
-    const { cards, page, pageSize, totalCount } = this.state;
+    const { cards, page, pageSize, totalCount, sets } = this.state;
 
     return (
       <div className={styles.app}>
@@ -48,7 +61,7 @@ class App extends Component {
         </header>
         <main>
           <section>
-            <Search onSearch={this.handleSearch}/>
+            <Search onSearch={this.saveNewQuery} sets={sets} />
           </section>
           
           {cards &&

@@ -18,12 +18,12 @@ export default class Paging extends Component {
   render() {
     const { page, pageSize, totalCount } = this.props;
 
-    const totalPages = parseInt(totalCount / pageSize);
+    const totalPages = Math.ceil(totalCount / pageSize);
 
     return (
-      <section>
-        <button onClick={() => this.handleClick(-1)}>^</button>
-        <span>PAGE {page} of {totalPages}</span>
+      <section id="paging">
+        <button disabled={page === 1}onClick={() => this.handleClick(-1)}>^</button>
+        <span>{page} of {totalPages}</span>
         <button onClick={() => this.handleClick(1)}>v</button>
       </section>
     );

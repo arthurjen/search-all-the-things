@@ -9,7 +9,8 @@ export default class Search extends Component {
   };
 
   static propTypes = {
-    onSearch: PropTypes.func.isRequired
+    onSearch: PropTypes.func.isRequired,
+    sets: PropTypes.arrayOf(Object).isRequired
   };
 
   handleChange = ({ target }) => {
@@ -22,7 +23,8 @@ export default class Search extends Component {
   };
 
   render() {
-    const { name, set } = this.state;
+    const { name } = this.state;
+    const { sets } = this.props;
 
     return (
       <form className="search-form" onSubmit={event => this.handleSubmit(event)}>
@@ -32,7 +34,12 @@ export default class Search extends Component {
         </label>
         <label>
           Set:
-          <input name="set" value={set} onChange={this.handleChange}/>
+          <select name="set" onChange={event => this.handleChange(event)}>
+            <option value=""></option>
+            {sets.map(set => (
+              <option key={set.code} value={set.code}>{set.name}</option>
+            ))}
+          </select>
         </label>
         <button>Search</button>
       </form>
