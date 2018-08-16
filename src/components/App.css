@@ -3,4 +3,8 @@
     font-size: 1em;
     color: blue;
   }
+
+  #display {
+    display: flex;
+  }
 }

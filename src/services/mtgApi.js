@@ -5,7 +5,9 @@ const TYPES_URL = `${BASE_URL}/types`;
 
 const throwJson = json => { throw json; };
 const get = url => fetch(url)
-  .then(r => r.ok ? r.json() : r.json().then(throwJson));
+  .then(r => {
+    return r.ok ? Promise.all([r.json(), +r.headers.get('Total-Count')]) : r.json().then(throwJson);
+  });
 
 export function search({ name = '', set = '' }, { page = 1, pageSize = 5 } = {}) {
   const paging = `?page=${page}&pageSize=${pageSize}`;
@@ -13,7 +15,7 @@ export function search({ name = '', set = '' }, { page = 1, pageSize = 5 } = {})
   const setQuery = `&set=${set}`;
 
 
-  return get(`${CARDS_URL}${paging}${nameQuery}${setQuery}`).then(r => r.cards);
+  return get(`${CARDS_URL}${paging}${nameQuery}${setQuery}`);
 }
 
 export function getSets() {
