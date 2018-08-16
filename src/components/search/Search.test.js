@@ -16,15 +16,14 @@ describe('Search Component', () => {
     const name = 'treasure cruise';
 
     wrapper.find('[name="name"]').simulate('change', {
-      target: { value: name }
+      target: { name: 'name', value: name }
     });
     wrapper.find('button').simulate('submit');
 
     const calls = handleSearch.mock.calls;
     expect(calls.length).toBe(1);
 
-    // 'treasure cruise' is being stored as key 'undefined' not 'name'
-    expect(calls[0][0].undefined).toBe(name);
+    expect(calls[0][0].name).toBe(name);
   });
 
   it('renders as designed', () => {

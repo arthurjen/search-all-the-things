@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import styles from './Paging.css';
 
 export default class Paging extends Component {
 
@@ -21,7 +22,7 @@ export default class Paging extends Component {
     const totalPages = Math.ceil(totalCount / pageSize);
 
     return (
-      <section id="paging">
+      <section id="paging" className={styles.paging}>
         <button disabled={page === 1}onClick={() => this.handleClick(-1)}>^</button>
         <span>{page} of {totalPages}</span>
         <button onClick={() => this.handleClick(1)}>v</button>
