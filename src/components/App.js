@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Search from './search/Search.js';
 import styles from './App.css';
+import { search } from '../services/mtgApi.js';
 
 class App extends Component {
   state = {
@@ -8,14 +9,17 @@ class App extends Component {
   };
 
   handleSearch = (query) => {
-    console.log(query);
+    search(query)
+      .then(result => {
+        console.log(result[0]);
+      });
   };
 
   render() {
     return (
       <div className={styles.app}>
         <header>
-          <h1>Mystical Tutor</h1>
+          <h1>Mystical Tutor - Magic: the Gathering Card Search Engine</h1>
         </header>
         <main>
           <Search onSearch={this.handleSearch}/>

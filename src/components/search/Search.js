@@ -13,7 +13,7 @@ export default class Search extends Component {
   };
 
   handleChange = ({ target }) => {
-    this.setState({ [target.name]: target.value })
+    this.setState({ [target.name]: target.value });
   };
 
   handleSubmit = event => {
