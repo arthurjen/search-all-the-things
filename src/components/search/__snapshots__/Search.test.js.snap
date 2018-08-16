@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search Component renders as designed 1`] = `
+<form
+  className="search-form"
+  onSubmit={[Function]}
+>
+  <label>
+    Name:
+    <input
+      name="name"
+      onChange={[Function]}
+      value=""
+    />
+  </label>
+  <label>
+    Set:
+    <input
+      name="set"
+      onChange={[Function]}
+      value=""
+    />
+  </label>
+  <button>
+    Search
+  </button>
+</form>
+`;
