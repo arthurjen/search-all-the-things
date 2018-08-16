@@ -12,7 +12,8 @@
 
   #display {
     width: 100%;
-
+    display: grid;
+    
   }
   ul {
     display: flex;

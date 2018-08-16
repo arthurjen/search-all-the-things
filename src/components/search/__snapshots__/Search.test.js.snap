@@ -2,7 +2,6 @@
 
 exports[`Search Component renders as designed 1`] = `
 <form
-  className="search-form"
   onSubmit={[Function]}
 >
   <label>
@@ -15,11 +14,14 @@ exports[`Search Component renders as designed 1`] = `
   </label>
   <label>
     Set:
-    <input
+    <select
       name="set"
       onChange={[Function]}
-      value=""
-    />
+    >
+      <option
+        value=""
+      />
+    </select>
   </label>
   <button>
     Search

@@ -6,8 +6,12 @@ import toJSON from 'enzyme-to-json';
 describe('Search Component', () => {
 
   it('calls onSearch with query', () => {
+    const sets = [{
+      name: 'Khans of Tarkir',
+      code: 'KTK'
+    }];
     const handleSearch = jest.fn();
-    const wrapper = mount(<Search onSearch={handleSearch}/>);
+    const wrapper = mount(<Search onSearch={handleSearch} sets={sets}/>);
 
     const name = 'treasure cruise';
 
@@ -24,7 +28,7 @@ describe('Search Component', () => {
   });
 
   it('renders as designed', () => {
-    const wrapper = shallow(<Search onSearch={() => {}}/>);
+    const wrapper = shallow(<Search onSearch={() => {}} sets={[]}/>);
     expect(toJSON(wrapper)).toMatchSnapshot();
   });
 });
