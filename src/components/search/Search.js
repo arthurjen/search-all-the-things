@@ -46,7 +46,7 @@ export default class Search extends Component {
     const { name, set } = this.state;
     const { history } = this.props;
     history.push({
-      pathname: '/cards',
+      pathname: '/results',
       search: qs.stringify({ name, set })
     });
   };
