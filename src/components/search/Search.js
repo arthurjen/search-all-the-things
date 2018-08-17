@@ -19,11 +19,12 @@ export default class Search extends Component {
   };
 
   componentDidMount() {
-    const { location } = this.props;
-    const { name = '' } = qs.parse(location.name);
-    const { match, history } = this.props;
-    console.log('match', match);
-    console.log('location', location);
+    // const { location } = this.props;
+    // const { search = '' } = qs.parse(location.search);
+    // const { match, history } = this.props;
+    // console.log('match', match);
+    // console.log('location', location);
+    // console.log('history', history);
 
     getSets().then(_sets => {
       const sets = _sets.map(set => {
@@ -32,7 +33,7 @@ export default class Search extends Component {
           name: set.name
         };
       }).sort();
-      this.setState({ sets, name });
+      this.setState({ sets });
     });
   }
 
@@ -42,6 +43,12 @@ export default class Search extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    const { name, set } = this.state;
+    const { history } = this.props;
+    history.push({
+      pathname: '/cards',
+      search: qs.stringify({ name, set })
+    });
   };
 
   render() {
