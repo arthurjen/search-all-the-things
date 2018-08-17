@@ -1,0 +1,34 @@
+:local(.app) {
+  header {
+    height: 30px;
+    background: blue;
+  }
+
+  h1 {
+    padding: 5px 20px;
+    font-size: 1em;
+    color: white;
+  }
+
+  #display {
+    width: 100%;
+    display: grid;
+    grid: 100% / 1fr 50px;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  main {
+    display: grid;
+    grid: 750px / 25% 1fr;
+  }
+
+  #paging {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
