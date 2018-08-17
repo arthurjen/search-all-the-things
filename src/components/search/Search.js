@@ -1,18 +1,40 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import qs from 'query-string';
 import styles from './Search.css';
 import './Search.css';
+import { getSets } from '../../services/mtgApi.js';
+
 
 export default class Search extends Component {
   state = {
     name: '',
+    sets: [],
     set: ''
   };
 
   static propTypes = {
-    onSearch: PropTypes.func.isRequired,
-    sets: PropTypes.arrayOf(Object).isRequired
+    history: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired
   };
+
+  componentDidMount() {
+    const { location } = this.props;
+    const { name = '' } = qs.parse(location.name);
+    const { match, history } = this.props;
+    console.log('match', match);
+    console.log('location', location);
+
+    getSets().then(_sets => {
+      const sets = _sets.map(set => {
+        return {
+          code: set.code,
+          name: set.name
+        };
+      }).sort();
+      this.setState({ sets, name });
+    });
+  }
 
   handleChange = ({ target }) => {
     this.setState({ [target.name]: target.value });
@@ -20,12 +42,10 @@ export default class Search extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.onSearch(this.state);
   };
 
   render() {
-    const { name } = this.state;
-    const { sets } = this.props;
+    const { name, sets } = this.state;
 
     return (
       <form className={styles.cards} onSubmit={event => this.handleSubmit(event)}>

@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import Search from './search/Search.js';
 import Cards from './cards/Cards.js';
 import Paging from './paging/Paging.js';
+import Header from './Header.js';
+import Home from './home/Home.js';
 import styles from './App.css';
 import { search, getSets } from '../services/mtgApi.js';
 
@@ -55,24 +58,20 @@ class App extends Component {
     const { cards, page, pageSize, totalCount, sets } = this.state;
 
     return (
-      <div className={styles.app}>
-        <header>
-          <h1>Mystical Tutor - Magic: the Gathering Card Search Engine</h1>
-        </header>
-        <main>
-          <section>
-            <Search onSearch={this.saveNewQuery} sets={sets} />
-          </section>
-          
-          {cards &&
-            <section id="display">
-              <Cards cards={cards}/>
-              <Paging page={page} pageSize={pageSize} totalCount={totalCount} onPageChange={this.handlePageChange}/>
-            </section>
-          }
-          
-        </main>
-      </div>
+      <Router>
+        <div className={styles.app}>
+          <header>
+            <h1>Mystical Tutor - Magic: the Gathering Card Search Engine</h1>
+            <Header onSearch={this.handleSearch}/>
+          </header>
+          <main>
+            <Switch>
+              <Route exact path="/" component={Home}/>
+              <Route exact path="/cards" component={Cards}/>
+            </Switch>
+          </main>
+        </div>
+      </Router>
     );
   }
 }
