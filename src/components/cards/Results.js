@@ -24,16 +24,20 @@ class Results extends Component {
   };
 
   componentDidMount() {
-    const { location } = this.props;
-    const query = qs.parse(location.search);
-    this.setState({ query }, () => this.searchCards());
+    this.setState({ query: this.query }, () => this.searchCards());
     
+  }
+
+  componentDidUpdate({ location }) {
+    const oldQuery = qs.parse(location.search);
+    if(oldQuery === this.query) return;
+    this.searchCards();
   }
 
   get query() {
     const { location } = this.props;
-    const { search } = qs.parse(location.search);
-    return search;
+    const query = qs.parse(location.search);
+    return query;
   }
 
   saveNewQuery = (query) => {

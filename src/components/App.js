@@ -21,9 +21,9 @@ class App extends Component {
         <div className={styles.app}>
           <header>
             <h1>Mystical Tutor - Magic: the Gathering Card Search Engine</h1>
-            <Header onSearch={this.handleSearch}/>
           </header>
           <main>
+            <Header onSearch={this.handleSearch}/>
             <Switch>
               <Route exact path="/" component={Home}/>
               <Route exact path="/results" component={Results}/>
