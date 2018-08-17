@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Paging from '../paging/Paging.js';
+import Cards from './Cards.js';
 import qs from 'query-string';
 import { search } from '../../services/mtgApi.js';
 
@@ -23,7 +24,10 @@ class Results extends Component {
   };
 
   componentDidMount() {
-    this.searchCards();
+    const { location } = this.props;
+    const query = qs.parse(location.search);
+    this.setState({ query }, () => this.searchCards());
+    
   }
 
   get query() {
@@ -57,9 +61,16 @@ class Results extends Component {
 
   render() {
 
+    const { cards, page, pageSize, totalCount } = this.state;
+
     return (
       <section>
-        <h2>RESULTS</h2>
+        {cards &&
+          <section  id="display">
+            <Cards cards={cards}/>
+            <Paging page={page} pageSize={pageSize} totalCount={totalCount} onPageChange={this.handlePageChange}/>
+          </section>
+        }
       </section>
     );
     
