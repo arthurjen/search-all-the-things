@@ -12,7 +12,7 @@ class Detail extends Component {
 
   static propTypes = {
     match: PropTypes.object.isRequired
-  }
+  };
 
   componentDidMount() {
     const { id } = this.props.match.params;
@@ -39,7 +39,7 @@ class Detail extends Component {
         .then(() => {
           this.setState({ favorite: null });
         })
-        .catch(console.log)
+        .catch(console.log);
     }
     else {
       addFavorite(this.state.card)

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { addFavorite, removeFavorite } from '../../services/favoritesApi.js';
+import { addFavorite } from '../../services/favoritesApi.js';
 import { Link } from 'react-router-dom';
 
 export default class Card extends Component {
