@@ -14,7 +14,9 @@ class Results extends Component {
     sets: [],
     query: '',
     cards: '',
-    totalCount: 0
+    totalCount: 0,
+    loading: false,
+    error: null
   };
 
   static propTypes = {
@@ -41,12 +43,24 @@ class Results extends Component {
   }
 
   searchCards = () => {
+    this.setState({
+      loading: true,
+      error: null
+    });
+
     const query = this.query;
     console.log('QUERY:', query);
     search(query)
       .then(([results, totalCount]) => {
         const cards = results.cards;
         this.setState({ cards, totalCount, query });
+      },
+      err => {
+        this.setState({ error: err.message });
+      }
+      )
+      .then(() => {
+        this.setState({ loading: false });
       });
   };
   
@@ -62,10 +76,16 @@ class Results extends Component {
 
   render() {
 
-    const { cards, totalCount, query } = this.state;
+    const { cards, totalCount, query, loading, error } = this.state;
 
     return (
       <section>
+        {(loading || error) &&
+          <section className="notifications">
+            {loading && <div>Loading...</div>}
+            {error && <div>{error}</div>}
+          </section>
+        }
         {cards &&
           <section  id="display">
             <Cards cards={cards}/>
