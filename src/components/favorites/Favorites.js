@@ -22,7 +22,7 @@ class Favorites extends Component {
     return (
       <ul>
         {favorites.map((card, i) => (
-          <Card key={i} card={card}/>
+          <Card key={i} card={card} isFavorite={true}/>
         ))}
       </ul>
     );

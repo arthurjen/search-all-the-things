@@ -27,3 +27,8 @@ export function getSets() {
 export function getTypes() {
   return get(TYPES_URL).then(r => r.types);
 }
+
+export function getCard(id) {
+  const url = `${CARDS_URL}/${id}`;
+  return get(url).then(r => r.card);
+}

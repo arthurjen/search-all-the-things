@@ -3,16 +3,24 @@ import PropTypes from 'prop-types';
 import { addFavorite, removeFavorite } from '../../services/favoritesApi.js';
 
 export default class Card extends Component {
+  // state = {
+  //   isFavorite: true
+  // };
 
   static propTypes = {
     card: PropTypes.object.isRequired,
-    isFavorite: PropTypes.bool
+    // isFavorite: PropTypes.bool
   };
 
   handleClick = () => {
-    const { favorite } = this.state;
-    const isFavorite = !!favorite;
+    // const { card, isFavorite } = this.props;
 
+    // if(isFavorite) {
+    //   removeFavorite(card.id)
+    //     .then(() => {
+    //       this.setState({  })
+    //     })
+    // }
     addFavorite(this.props.card)
       .catch(console.log);
   };

@@ -28,7 +28,7 @@ class App extends Component {
               <Route exact path="/" component={Home}/>
               <Route exact path="/results" component={Results}/>
               <Route exact path="/favorites" component={Favorites}/>
-              <Route exact path="/detail" component={Detail}/>
+              <Route path="/detail/:id" component={Detail}/>
               <Redirect to="/"/>
             </Switch>
           </main>
