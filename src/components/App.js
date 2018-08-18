@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import Search from './search/Search.js';
+import Detail from './cards/Detail.js';
 import Results from './cards/Results.js';
-import Paging from './paging/Paging.js';
+import Favorites from './favorites/Favorites.js';
 import Header from './Header.js';
 import Home from './home/Home.js';
 import styles from './App.css';
@@ -27,6 +27,8 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Home}/>
               <Route exact path="/results" component={Results}/>
+              <Route exact path="/favorites" component={Favorites}/>
+              <Route exact path="/detail" component={Detail}/>
               <Redirect to="/"/>
             </Switch>
           </main>
