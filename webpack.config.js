@@ -20,6 +20,7 @@ module.exports = {
   devtool: 'inline-source-map',
   devServer: {
     contentBase: `./${buildDir}`,
+    historyApiFallback: true
   },
   plugins: [
     // add plugins

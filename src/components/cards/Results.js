@@ -24,14 +24,16 @@ class Results extends Component {
   };
 
   componentDidMount() {
-    this.setState({ query: this.query }, () => this.searchCards());
-    
+    this.searchCards();
   }
 
   componentDidUpdate({ location }) {
     const oldQuery = qs.parse(location.search);
-    if(oldQuery === this.query) return;
-    this.searchCards();
+    if(oldQuery.name !== this.query.name || oldQuery.set !== this.query.set) {
+      this.searchCards();
+      console.log(this.query);
+    }
+    //TODO: reset page to 1
   }
 
   get query() {
@@ -40,19 +42,14 @@ class Results extends Component {
     return query;
   }
 
-  saveNewQuery = (query) => {
-    const page = 1;
-    this.setState({ query, page }, () => {
-      this.handleSearch();
-    });
-  };
-
   searchCards = () => {
-    const { query, page, pageSize } = this.state;
+    console.log('searching...');
+    const { page, pageSize } = this.state;
+    const query = this.query;
     search(query, { page, pageSize })
       .then(([results, totalCount]) => {
         const cards = results.cards;
-        this.setState({ cards, totalCount });
+        this.setState({ cards, totalCount, query });
       });
   };
   
