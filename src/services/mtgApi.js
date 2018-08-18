@@ -12,7 +12,7 @@ const getCards = url => fetch(url)
 const get = url => fetch(url)
   .then(r => r.ok ? r.json() : r.json().then(throwJson));
 
-export function search({ name = '', set = '' }, { page = 1, pageSize = 5 } = {}) {
+export function search({ name = '', set = '', page = 1, pageSize = 10 }) {
   const paging = `?page=${page}&pageSize=${pageSize}`;
   const nameQuery = `&name=${name}`;
   const setQuery = `&set=${set}`;

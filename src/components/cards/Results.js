@@ -14,13 +14,12 @@ class Results extends Component {
     sets: [],
     query: '',
     cards: '',
-    page: 1,
-    pageSize: 10,
     totalCount: 0
   };
 
   static propTypes = {
-    location: PropTypes.object.isRequired
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
   };
 
   componentDidMount() {
@@ -29,11 +28,10 @@ class Results extends Component {
 
   componentDidUpdate({ location }) {
     const oldQuery = qs.parse(location.search);
-    if(oldQuery.name !== this.query.name || oldQuery.set !== this.query.set) {
-      this.searchCards();
+    if(oldQuery.name !== this.query.name || oldQuery.set !== this.query.set || oldQuery.page !== this.query.page || oldQuery.pageSize !== this.query.pageSize) {
+      this.setState({ page: 1 }, () => this.searchCards());
       console.log(this.query);
     }
-    //TODO: reset page to 1
   }
 
   get query() {
@@ -43,10 +41,9 @@ class Results extends Component {
   }
 
   searchCards = () => {
-    console.log('searching...');
-    const { page, pageSize } = this.state;
     const query = this.query;
-    search(query, { page, pageSize })
+    console.log('QUERY:', query);
+    search(query)
       .then(([results, totalCount]) => {
         const cards = results.cards;
         this.setState({ cards, totalCount, query });
@@ -55,21 +52,24 @@ class Results extends Component {
   
 
   handlePageChange = (page) => {
-    this.setState({ page }, () => {
-      this.handleSearch();
+    const { name, set, pageSize } = this.state.query;
+    const { history } = this.props;
+    history.push({
+      pathname: '/results',
+      search: qs.stringify({ page, pageSize, name, set })
     });
   };
 
   render() {
 
-    const { cards, page, pageSize, totalCount } = this.state;
+    const { cards, totalCount, query } = this.state;
 
     return (
       <section>
         {cards &&
           <section  id="display">
             <Cards cards={cards}/>
-            <Paging page={page} pageSize={pageSize} totalCount={totalCount} onPageChange={this.handlePageChange}/>
+            <Paging page={+query.page} pageSize={+query.pageSize} totalCount={totalCount} onPageChange={this.handlePageChange}/>
           </section>
         }
       </section>

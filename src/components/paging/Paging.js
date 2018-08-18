@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Paging.css';
+import qs from 'query-string';
 
 export default class Paging extends Component {
 
@@ -10,6 +11,8 @@ export default class Paging extends Component {
     totalCount: PropTypes.number.isRequired,
     onPageChange: PropTypes.func.isRequired
   };
+
+
 
   handleClick = (n) => {
     const newPage = this.props.page + n;
@@ -25,7 +28,7 @@ export default class Paging extends Component {
       <section id="paging" className={styles.paging}>
         <button disabled={page === 1}onClick={() => this.handleClick(-1)}>^</button>
         <span>{page} of {totalPages}</span>
-        <button onClick={() => this.handleClick(1)}>v</button>
+        <button disabled={page === totalPages} onClick={() => this.handleClick(1)}>v</button>
       </section>
     );
   }
