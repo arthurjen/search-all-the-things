@@ -10,6 +10,11 @@ export const addFavorite = ({ id, name, imageUrl }) => {
   return put(url, { id, name, imageUrl });
 };
 
+export const getFavorite = id => {
+  const url = getFavoriteUrl(id);
+  return get(url);
+};
+
 export const getFavorites = () => {
   return get(`${FAVORITES_URL}.json`)
     .then(response => {

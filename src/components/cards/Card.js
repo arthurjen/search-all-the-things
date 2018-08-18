@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { addFavorite, removeFavorite } from '../../services/favoritesApi.js';
+import { Link } from 'react-router-dom';
 
 export default class Card extends Component {
   // state = {
@@ -32,8 +33,10 @@ export default class Card extends Component {
 
     return (
       <li>
-        <img src={imageUrl} alt={`${name}(${setName})`}/>
-        <button onClick={this.handleClick}>⭐️</button>
+        <Link to={`/detail/${card.id}`}>
+          <img src={imageUrl} alt={`${name}(${setName})`}/>
+          {/* <button onClick={this.handleClick}>⭐️</button> */}
+        </Link>
       </li>
     );
   }
