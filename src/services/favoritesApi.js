@@ -17,3 +17,8 @@ export const getFavorites = () => {
         .map(key => response[key]);
     });
 };
+
+export const removeFavorite = id => {
+  const url = getFavoriteUrl(id);
+  return del(url);
+};
