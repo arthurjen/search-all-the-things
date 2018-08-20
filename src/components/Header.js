@@ -8,12 +8,9 @@ class Header extends Component {
     return (
       <header className={style.header}>
         <i className="far fa-moon"></i>
-        <h1>Mystical Tutor</h1>
+        <Link to="/"><h1>Mystical Tutor</h1></Link>
         <nav>
           <ul id="nav-bar">
-            <li>
-              <Link to="/">Home</Link>
-            </li>
             <li>
               <Link to="/results">Search</Link>
             </li> 

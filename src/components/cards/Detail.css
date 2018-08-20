@@ -1,1 +1,12 @@
-:local(.detail)
+:local(.detail) {
+  margin: 15px;
+
+  #detail-image {
+    text-align: center;
+
+  }
+  h1 {
+    margin: 10px;
+  }
+
+}
