@@ -1,0 +1,7 @@
+:local(.results) {
+  ul {
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(6, 1fr);
+    padding: 0;
+  }
+}

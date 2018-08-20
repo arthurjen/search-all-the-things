@@ -47,7 +47,7 @@ export default class Search extends Component {
     const { history } = this.props;
     history.push({
       pathname: '/results',
-      search: qs.stringify({ page: 1, pageSize: 10, name, set })
+      search: qs.stringify({ page: 1, pageSize: 18, name, set })
     });
   };
 
@@ -55,7 +55,7 @@ export default class Search extends Component {
     const { name, sets } = this.state;
 
     return (
-      <form className={styles.cards} onSubmit={event => this.handleSubmit(event)}>
+      <form className={styles.search} onSubmit={event => this.handleSubmit(event)}>
         <label>
           Name:
           <input name="name" value={name} onChange={this.handleChange}/>

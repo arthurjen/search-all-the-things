@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import Search from './search/Search';
-import { Link, Route } from 'react-router-dom';
-// import style from './Header.css';
+import { Link } from 'react-router-dom';
+import style from './Header.css';
 
 class Header extends Component {
 
   render() {
     return (
-      <div>
+      <header className={style.header}>
+        <i className="far fa-moon"></i>
+        <h1>Mystical Tutor</h1>
         <nav>
-          <ul>
+          <ul id="nav-bar">
             <li>
               <Link to="/">Home</Link>
             </li>
@@ -21,10 +22,7 @@ class Header extends Component {
             </li> 
           </ul>
         </nav>  
-        <section>
-          <Route component={Search}/>
-        </section>    
-      </div>
+      </header>
     );
 
   }

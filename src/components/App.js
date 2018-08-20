@@ -5,8 +5,8 @@ import Results from './cards/Results.js';
 import Favorites from './favorites/Favorites.js';
 import Header from './Header.js';
 import Home from './home/Home.js';
+import Search from './search/Search.js';
 import styles from './App.css';
-import { search, getSets } from '../services/mtgApi.js';
 
 class App extends Component {
 
@@ -19,11 +19,11 @@ class App extends Component {
     return (
       <Router>
         <div className={styles.app}>
-          <header>
-            <h1>Mystical Tutor - Magic: the Gathering Card Search Engine</h1>
-          </header>
+          <Header onSearch={this.handleSearch}/>
           <main>
-            <Header onSearch={this.handleSearch}/>
+            <section>
+              <Route component={Search}/>
+            </section>    
             <Switch>
               <Route exact path="/" component={Home}/>
               <Route exact path="/results" component={Results}/>

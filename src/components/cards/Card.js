@@ -34,7 +34,10 @@ export default class Card extends Component {
     return (
       <li>
         <Link to={`/detail/${card.id}`}>
-          <img src={imageUrl} alt={`${name}(${setName})`}/>
+          {imageUrl ?
+            <img src={imageUrl} alt={`${name}(${setName})`}/>
+            : <p>{name}<br/>({setName}) <br/>Image Not Available</p>
+          }
           {/* <button onClick={this.handleClick}>⭐️</button> */}
         </Link>
       </li>
