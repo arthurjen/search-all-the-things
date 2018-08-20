@@ -7,8 +7,10 @@ class Header extends Component {
   render() {
     return (
       <header className={style.header}>
-        <i className="far fa-moon"></i>
-        <Link to="/"><h1>Mystical Tutor</h1></Link>
+        <div>
+          <i className="far fa-moon"></i>
+          <Link to="/"><h1>Mystical Tutor</h1></Link>
+        </div>
         <nav>
           <ul id="nav-bar">
             <li>
