@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { getFavorites } from '../../services/favoritesApi';
 import Card from '../cards/Card';
-
+import style from './Favorites.css';
 class Favorites extends Component {
 
   state = {
@@ -20,7 +20,7 @@ class Favorites extends Component {
     const { favorites } = this.state;
     if(!favorites) return null;
     return (
-      <ul>
+      <ul className={style.favorites}>
         {favorites.map((card, i) => (
           <Card key={i} card={card} isFavorite={true}/>
         ))}

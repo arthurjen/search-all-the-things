@@ -1,5 +1,5 @@
 :local(.detail) {
-  margin: 15px;
+  padding: 15px;
 
   #detail-image {
     text-align: center;
@@ -7,6 +7,15 @@
   }
   h1 {
     margin: 10px;
+  }
+
+  span {
+    margin: 0px 10px;
+  }
+
+  button {
+    border: none;
+    margin-left: 5px;
   }
 
 }
