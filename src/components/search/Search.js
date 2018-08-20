@@ -10,6 +10,7 @@ export default class Search extends Component {
   state = {
     name: '',
     sets: [],
+    types: '',
     set: ''
   };
 
@@ -37,31 +38,35 @@ export default class Search extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const { name, set } = this.state;
+    const { name, set, type } = this.state;
     const { history } = this.props;
     history.push({
       pathname: '/results',
-      search: qs.stringify({ page: 1, pageSize: 18, name, set })
+      search: qs.stringify({ page: 1, pageSize: 18, name, set, type })
     });
   };
 
   render() {
-    const { name, sets } = this.state;
+    const { name, sets, type } = this.state;
 
     return (
       <form className={styles.search} onSubmit={event => this.handleSubmit(event)}>
         <label>
-          Name:
+          Name:&nbsp;
           <input name="name" value={name} onChange={this.handleChange}/>
         </label>
         <label>
-          Set:
+          Set:&nbsp;
           <select name="set" onChange={event => this.handleChange(event)}>
             <option value=""></option>
             {sets.map(set => (
               <option key={set.code} value={set.code}>{set.name}</option>
             ))}
           </select>
+        </label>
+        <label>
+          Type:&nbsp;
+          <input name="type" value={type} onChange={this.handleChange}/>
         </label>
         <button>Search</button>
       </form>

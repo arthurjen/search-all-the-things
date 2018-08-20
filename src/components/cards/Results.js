@@ -30,9 +30,16 @@ class Results extends Component {
 
   componentDidUpdate({ location }) {
     const oldQuery = qs.parse(location.search);
-    if(oldQuery.name !== this.query.name || oldQuery.set !== this.query.set || oldQuery.page !== this.query.page || oldQuery.pageSize !== this.query.pageSize) {
-      this.searchCards();
+    const { name, set, page, pageSize, type } = oldQuery;
+    if(
+      name !== this.query.name ||
+      set !== this.query.set ||
+      page !== this.query.page ||
+      pageSize !== this.query.pageSize ||
+      type !== this.query.type
+    ) {
       console.log(this.query);
+      this.searchCards();
     }
   }
 
@@ -49,7 +56,6 @@ class Results extends Component {
     });
 
     const query = this.query;
-    console.log('QUERY:', query);
     search(query)
       .then(([results, totalCount]) => {
         const cards = results.cards;
@@ -66,11 +72,11 @@ class Results extends Component {
   
 
   handlePageChange = (page) => {
-    const { name, set, pageSize } = this.state.query;
+    const { name, set, type, pageSize } = this.state.query;
     const { history } = this.props;
     history.push({
       pathname: '/results',
-      search: qs.stringify({ page, pageSize, name, set })
+      search: qs.stringify({ page, pageSize, name, set, type })
     });
   };
 

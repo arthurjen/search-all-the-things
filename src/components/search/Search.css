@@ -1,11 +1,14 @@
 :local(.search) {
+
+  padding: 10px;
+
   li {
     list-style-type: none;
   }
   
   label {
-    margin: 10px;
     display: block;
+    margin: 10px 0px;
   }
 
   select {
