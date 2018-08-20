@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cards renders correctly 1`] = `
+<ul>
+  <Card
+    card={
+      Object {
+        "id": 1,
+      }
+    }
+    key="0"
+  />
+  <Card
+    card={
+      Object {
+        "id": 2,
+      }
+    }
+    key="1"
+  />
+  <Card
+    card={
+      Object {
+        "id": 3,
+      }
+    }
+    key="2"
+  />
+</ul>
+`;
