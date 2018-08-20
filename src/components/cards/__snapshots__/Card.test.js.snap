@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card renders card correctly 1`] = `
+<li>
+  <Link
+    replace={false}
+    to="/detail/undefined"
+  >
+    <img
+      alt="Adorable Kitten(set name)"
+      src="image.jpg"
+    />
+  </Link>
+</li>
+`;
