@@ -53,15 +53,25 @@ class Detail extends Component {
   render() {
     const { card, favorite } = this.state;
     if(!card) return null;
-    const { name, imageUrl, manaCost } = card;
+    const { name, imageUrl, manaCost, colors, type, rarity, setName, text, rulings } = card;
     return (
       <div>
-        <h2>{name}</h2>
-        <h3>{manaCost}</h3>
         <img src={imageUrl}/>
-        <button onClick={this.handleClick}>
-          {favorite ? '❌' : '⭐️' }
-        </button>
+        <section>
+          <h2>Name: {name}</h2>
+          <h3>Mana Cost: {manaCost}</h3>
+          <h4>Colors: {colors}</h4>
+          <h4>Type: {type}</h4>
+          <h4>Rarity: {rarity}</h4>
+          <h4>Set: {setName}</h4>
+          <p>Text: {text}</p>
+          {/* <h4>{rulings}</h4> */}
+          <span>Favorite:
+            <button onClick={this.handleClick}>
+              {favorite ? '❌' : '❤️' }
+            </button>
+          </span>
+        </section>
       </div>
 
     );
