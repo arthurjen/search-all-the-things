@@ -1,6 +1,18 @@
 :local(.paging) {
   button {
     height: 100%;
+    border: none;
+    color: white;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+  }
 
+  button:hover { 
+    background-color: #e7e7e7;
+    border: 1px solid lightgrey;
+  }
+
+  span {
+    text-align: center;
   }
 }

@@ -4,7 +4,7 @@ import Paging from '../paging/Paging.js';
 import Cards from './Cards.js';
 import qs from 'query-string';
 import { search } from '../../services/mtgApi.js';
-
+import styles from './Results.css';
 
 
 
@@ -31,7 +31,7 @@ class Results extends Component {
   componentDidUpdate({ location }) {
     const oldQuery = qs.parse(location.search);
     if(oldQuery.name !== this.query.name || oldQuery.set !== this.query.set || oldQuery.page !== this.query.page || oldQuery.pageSize !== this.query.pageSize) {
-      this.setState({ page: 1 }, () => this.searchCards());
+      this.searchCards();
       console.log(this.query);
     }
   }
@@ -79,7 +79,7 @@ class Results extends Component {
     const { cards, totalCount, query, loading, error } = this.state;
 
     return (
-      <section>
+      <section className={styles.results}>
         {(loading || error) &&
           <section className="notifications">
             {loading && <div>Loading...</div>}
@@ -89,7 +89,11 @@ class Results extends Component {
         {cards &&
           <section  id="display">
             <Cards cards={cards}/>
-            <Paging page={+query.page} pageSize={+query.pageSize} totalCount={totalCount} onPageChange={this.handlePageChange}/>
+            <Paging
+              page={+query.page}
+              pageSize={+query.pageSize}
+              totalCount={totalCount}
+              onPageChange={this.handlePageChange}/>
           </section>
         }
       </section>

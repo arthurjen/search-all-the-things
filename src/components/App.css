@@ -1,6 +1,9 @@
 :local(.app) {
   header {
-    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 50px;
     background: blue;
   }
 
@@ -9,21 +12,19 @@
     font-size: 1em;
     color: white;
   }
-
+  
+  #nav-bar {
+    display: flex;
+  }
   #display {
     width: 100%;
     display: grid;
     grid: 100% / 1fr 50px;
   }
 
-  ul {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
   main {
     display: grid;
-    grid: 750px / 25% 1fr;
+    grid: 730px / 20% 1fr;
   }
 
   #paging {
