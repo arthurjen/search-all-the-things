@@ -3,5 +3,25 @@
     display: grid;
     grid-template: repeat(3, 1fr) / repeat(6, 1fr);
     padding: 0;
+    
+  }
+
+  .notifications {
+    position: absolute;
+    display: flex;
+    top: 0;
+    left: 5px;
+    right: 5px;
+    bottom: 0;
+    opacity: .5;
+    background: black;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    
+    * {
+      margin: 5px 10px;
+    }
   }
 }
