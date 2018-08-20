@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: space-around;
     height: 50px;
-    background: blue;
+    background: #067bbf;
   }
 
   h1 {
@@ -12,7 +12,7 @@
     font-size: 1em;
     color: white;
   }
-  
+
   #nav-bar {
     display: flex;
   }
