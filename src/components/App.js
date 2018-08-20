@@ -1,78 +1,39 @@
 import React, { Component } from 'react';
-import Search from './search/Search.js';
-import Cards from './cards/Cards.js';
-import Paging from './paging/Paging.js';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import Detail from './cards/Detail.js';
+import Results from './cards/Results.js';
+import Favorites from './favorites/Favorites.js';
+import Header from './Header.js';
+import Home from './home/Home.js';
 import styles from './App.css';
 import { search, getSets } from '../services/mtgApi.js';
 
 class App extends Component {
-  state = {
-    sets: [],
-    query: '',
-    cards: '',
-    page: 1,
-    pageSize: 10,
-    totalCount: 0
-  };
 
-  componentDidMount() {
-    getSets().then(_sets => {
-      const sets = _sets.map(set => {
-        return {
-          code: set.code,
-          name: set.name
-        };
-      }).sort();
-      this.setState({ sets });
-    });
-  }
 
-  saveNewQuery = (query) => {
-    const page = 1;
-    this.setState({ query, page }, () => {
-      this.handleSearch();
-    });
-  };
-
-  handleSearch = () => {
-    const { query, page, pageSize } = this.state;
-    search(query, { page, pageSize })
-      .then(([results, totalCount]) => {
-        const cards = results.cards;
-        this.setState({ cards, totalCount });
-      });
-  };
   
-
-  handlePageChange = (page) => {
-    this.setState({ page }, () => {
-      this.handleSearch();
-    });
-  };
 
   render() {
 
-    const { cards, page, pageSize, totalCount, sets } = this.state;
 
     return (
-      <div className={styles.app}>
-        <header>
-          <h1>Mystical Tutor - Magic: the Gathering Card Search Engine</h1>
-        </header>
-        <main>
-          <section>
-            <Search onSearch={this.saveNewQuery} sets={sets} />
-          </section>
-          
-          {cards &&
-            <section id="display">
-              <Cards cards={cards}/>
-              <Paging page={page} pageSize={pageSize} totalCount={totalCount} onPageChange={this.handlePageChange}/>
-            </section>
-          }
-          
-        </main>
-      </div>
+      <Router>
+        <div className={styles.app}>
+          <header>
+            <h1>Mystical Tutor - Magic: the Gathering Card Search Engine</h1>
+          </header>
+          <main>
+            <Header onSearch={this.handleSearch}/>
+            <Switch>
+              <Route exact path="/" component={Home}/>
+              <Route exact path="/results" component={Results}/>
+              <Route exact path="/favorites" component={Favorites}/>
+              <Route path="/detail/:id" component={Detail}/>
+              <Redirect to="/"/>
+            </Switch>
+          </main>
+        </div>
+      </Router>
     );
   }
 }
