@@ -19,13 +19,7 @@ export default class Search extends Component {
   };
 
   componentDidMount() {
-    // const { location } = this.props;
-    // const { search = '' } = qs.parse(location.search);
-    // const { match, history } = this.props;
-    // console.log('match', match);
-    // console.log('location', location);
-    // console.log('history', history);
-
+   
     getSets().then(_sets => {
       const sets = _sets.map(set => {
         return {
