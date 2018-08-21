@@ -74,11 +74,11 @@ class Results extends Component {
   
 
   handlePageChange = (page) => {
-    const { name, set, type, pageSize } = this.state.query;
+    const { name, set, type, pageSize, colors } = this.state.query;
     const { history } = this.props;
     history.push({
       pathname: '/results',
-      search: qs.stringify({ page, pageSize, name, set, type })
+      search: qs.stringify({ page, pageSize, name, set, type, colors })
     });
   };
 

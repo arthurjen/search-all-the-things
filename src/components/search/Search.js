@@ -13,7 +13,7 @@ export default class Search extends Component {
     type: '',
     set: '',
     colors: [],
-    or: true
+    logic: ''
   };
 
   static propTypes = {
@@ -34,6 +34,10 @@ export default class Search extends Component {
     });
   }
 
+  handleLogic = ({ target }) => {
+    this.setState({ logic: target.value });
+  };
+
   handleCheck = ({ target }) => {
     const { value } = target;
     const { colors } = this.state;
@@ -50,11 +54,11 @@ export default class Search extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const { name, set, type, colors } = this.state;
+    const { name, set, type, colors, logic } = this.state;
     const { history } = this.props;
     history.push({
       pathname: '/results',
-      search: qs.stringify({ page: 1, pageSize: 18, name, set, type, colors: colors.join(',') })
+      search: qs.stringify({ page: 1, pageSize: 18, name, set, type, colors: colors.join(logic === 'or' ? '|' : ',') })
     });
   };
 
@@ -82,7 +86,16 @@ export default class Search extends Component {
         </label>
         <div>
           <legend>Colors:</legend>
-          
+          <ul>
+            <li>
+              <input type="radio" name="logic" id="or" value="or" onChange={this.handleLogic}/>
+              <label htmlFor="or">Or</label>
+            </li>
+            <li>
+              <input type="radio" name="logic" id="and" value="and" onChange={this.handleLogic}/>
+              <label htmlFor="and">And</label>
+            </li>
+          </ul>
           <ul>
             <li>
               <input type="checkbox" id="white" name="colors" value="white" onChange={this.handleCheck}/>
