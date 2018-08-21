@@ -30,13 +30,15 @@ class Results extends Component {
 
   componentDidUpdate({ location }) {
     const oldQuery = qs.parse(location.search);
-    const { name, set, page, pageSize, type } = oldQuery;
+    const { name, set, page, pageSize, type, colors } = oldQuery;
+    
     if(
       name !== this.query.name ||
       set !== this.query.set ||
       page !== this.query.page ||
       pageSize !== this.query.pageSize ||
-      type !== this.query.type
+      type !== this.query.type ||
+      colors !== this.query.colors
     ) {
       console.log(this.query);
       this.searchCards();
