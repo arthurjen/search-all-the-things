@@ -64,7 +64,6 @@ export default class Search extends Component {
 
   resetForm = (event) => {
     event.preventDefault();
-    console.log('reset');
   };
 
   render() {

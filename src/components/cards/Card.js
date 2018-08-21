@@ -4,24 +4,13 @@ import { addFavorite } from '../../services/favoritesApi.js';
 import { Link } from 'react-router-dom';
 
 export default class Card extends Component {
-  // state = {
-  //   isFavorite: true
-  // };
 
   static propTypes = {
     card: PropTypes.object.isRequired,
-    // isFavorite: PropTypes.bool
   };
 
   handleClick = () => {
-    // const { card, isFavorite } = this.props;
-
-    // if(isFavorite) {
-    //   removeFavorite(card.id)
-    //     .then(() => {
-    //       this.setState({  })
-    //     })
-    // }
+    
     addFavorite(this.props.card)
       .catch(console.log);
   };
@@ -38,7 +27,6 @@ export default class Card extends Component {
             <img src={imageUrl} alt={`${name}(${setName})`}/>
             : <p>{name}<br/>({setName}) <br/>Image Not Available</p>
           }
-          {/* <button onClick={this.handleClick}>⭐️</button> */}
         </Link>
       </li>
     );
