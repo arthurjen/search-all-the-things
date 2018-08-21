@@ -14,7 +14,7 @@ class Header extends Component {
         <nav>
           <ul id="nav-bar">
             <li>
-              <Link to="/results">Search</Link>
+              <Link to="/results?page=1&pageSize=18">Search</Link>
             </li> 
             <li>
               <Link to="/favorites">Favorites</Link>

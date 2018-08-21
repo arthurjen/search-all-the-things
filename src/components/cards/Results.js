@@ -12,7 +12,7 @@ class Results extends Component {
 
   state = {
     sets: [],
-    query: '',
+    query: {},
     cards: '',
     totalCount: 0,
     loading: false,
@@ -94,8 +94,8 @@ class Results extends Component {
             {error && <div>{error}</div>}
           </section>
         }
-        {cards &&
-          <section  id="display">
+        {totalCount
+          ? <section  id="display">
             <Cards cards={cards}/>
             <Paging
               page={+query.page}
@@ -103,6 +103,7 @@ class Results extends Component {
               totalCount={totalCount}
               onPageChange={this.handlePageChange}/>
           </section>
+          : <div>No results found, try another search</div>
         }
       </section>
     );
