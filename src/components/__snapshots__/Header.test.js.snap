@@ -1,21 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header renders correctly 1`] = `
-<div>
+<header>
+  <div>
+    <i
+      className="far fa-moon"
+    />
+    <Link
+      replace={false}
+      to="/"
+    >
+      <h1>
+        Mystical Tutor
+      </h1>
+    </Link>
+  </div>
   <nav>
-    <ul>
+    <ul
+      id="nav-bar"
+    >
       <li>
         <Link
           replace={false}
-          to="/"
-        >
-          Home
-        </Link>
-      </li>
-      <li>
-        <Link
-          replace={false}
-          to="/results"
+          to="/results?page=1&pageSize=18"
         >
           Search
         </Link>
@@ -30,10 +37,5 @@ exports[`Header renders correctly 1`] = `
       </li>
     </ul>
   </nav>
-  <section>
-    <Route
-      component={[Function]}
-    />
-  </section>
-</div>
+</header>
 `;
