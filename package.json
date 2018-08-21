@@ -23,6 +23,9 @@
   },
   "homepage": "https://github.com/arthurjen/search-all-the-things#readme",
   "dependencies": {
+    "dotenv": "^6.0.0",
+    "dotenv-webpack": "^1.5.7",
+    "firebase": "^5.4.0",
     "identity-obj-proxy": "^3.0.0",
     "prop-types": "^15.6.2",
     "query-string": "^6.1.0",

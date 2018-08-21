@@ -2,6 +2,7 @@
 const { resolve } = require('path');
 const CleanPlugin = require('clean-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 const buildDir = 'docs';
 const path = resolve(__dirname, buildDir);
@@ -22,10 +23,14 @@ module.exports = {
     contentBase: `./${buildDir}`,
     historyApiFallback: true
   },
+  node: {
+    fs: 'empty'
+  },
   plugins: [
     // add plugins
     new CleanPlugin(`${path}/bundle.*.js`),
-    new HtmlPlugin({ template: './src/index.html' })
+    new HtmlPlugin({ template: './src/index.html' }),
+    new Dotenv()
   ],
   module: {
     rules: [
