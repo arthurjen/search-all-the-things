@@ -1,5 +1,25 @@
 :local(.home) {
-  img {
-    width: 100%;
+  background: url(https://i.imgur.com/27wGE3j.jpg) no-repeat 100% / 100%;
+  background-position: top;
+  display: grid;
+  grid-template-rows: 60% 15% 1fr;
+  grid-template-areas:
+    "space"
+    "title"
+    "description";
+  text-align: center;
+
+  h1, h2 {
+    color: white;
+    text-shadow: 2px 2px 10px black;
+  }
+
+  h1 {
+    grid-area: title;
+    font-size: 5em;
+  }
+
+  h2 {
+    grid-area: description;
   }
 }

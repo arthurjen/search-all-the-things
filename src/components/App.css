@@ -1,10 +1,6 @@
 :local(.app) {
 
-  h1 {
-    padding: 5px 20px;
-    font-size: 1em;
-    color: white;
-  }
+ 
 
   #nav-bar {
     display: flex;
