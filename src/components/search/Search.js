@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import qs from 'query-string';
-import styles from './Search.css';
+import style from './Search.css';
 import './Search.css';
 import { getSets } from '../../services/mtgApi.js';
 
@@ -62,11 +62,16 @@ export default class Search extends Component {
     });
   };
 
+  resetForm = (event) => {
+    event.preventDefault();
+    console.log('reset');
+  };
+
   render() {
     const { name, sets, type } = this.state;
 
     return (
-      <form className={styles.search} onSubmit={event => this.handleSubmit(event)}>
+      <form className={style.search} onSubmit={event => this.handleSubmit(event)}>
         <label>
           Name:&nbsp;
           <input name="name" value={name} onChange={this.handleChange}/>
@@ -86,16 +91,7 @@ export default class Search extends Component {
         </label>
         <div>
           <legend>Colors:</legend>
-          <ul>
-            <li>
-              <input type="radio" name="logic" id="or" value="or" onChange={this.handleLogic}/>
-              <label htmlFor="or">Or</label>
-            </li>
-            <li>
-              <input type="radio" name="logic" id="and" value="and" onChange={this.handleLogic}/>
-              <label htmlFor="and">And</label>
-            </li>
-          </ul>
+          
           <ul>
             <li>
               <input type="checkbox" id="white" name="colors" value="white" onChange={this.handleCheck}/>
@@ -118,7 +114,19 @@ export default class Search extends Component {
               <label htmlFor="green">Green</label>
             </li>
           </ul>
+
+          <ul>
+            <li>
+              <input type="radio" name="logic" id="or" value="or" onChange={this.handleLogic}/>
+              <label htmlFor="or">Or</label>
+            </li>
+            <li>
+              <input type="radio" name="logic" id="and" value="and" onChange={this.handleLogic}/>
+              <label htmlFor="and">And</label>
+            </li>
+          </ul>
         </div>
+        <input type="reset"/>
         <button>Search</button>
       </form>
     );

@@ -1,20 +1,35 @@
 :local(.search) {
 
   padding: 10px;
-  
+  font-size: 1.2em;
+
   li {
     list-style-type: none;
   }
   
   label {
-    margin: 10px 0px;
+    margin: 10px 10px;
+    display: block;
+  }
+
+  label > input {
+    width: 100%;
   }
 
   select {
-    width: 200px;
+    width: 100%;
   }
 
-  button {
-    font-size: 1.5em;
+  button, input[type='reset']{
+    margin-right: 15px;
+
+  }
+
+  div {
+    margin: 10px;
+  }
+
+  li > label {
+    display: inline;
   }
 }
