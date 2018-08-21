@@ -9,11 +9,13 @@
   i {
     color: white;
   }
+
   div {
     display: flex;
     align-items: center;
     padding-left: 20px;
   }
+  
   a {
     padding: 0px 10px;
     color: white;
@@ -28,5 +30,4 @@
   a:hover {
     text-decoration: underline;
   }
-
 }
