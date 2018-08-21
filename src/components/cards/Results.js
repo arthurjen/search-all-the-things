@@ -11,7 +11,6 @@ import styles from './Results.css';
 class Results extends Component {
 
   state = {
-    sets: [],
     query: {},
     cards: '',
     totalCount: 0,
@@ -59,13 +58,13 @@ class Results extends Component {
 
     const query = this.query;
     search(query)
-      .then(([results, totalCount]) => {
-        const cards = results.cards;
-        this.setState({ cards, totalCount, query });
-      },
-      err => {
-        this.setState({ error: err.message });
-      }
+      .then(
+        ([results, totalCount]) =>{
+          const cards = results.cards;
+          this.setState({ cards, totalCount, query });
+        }, err => {
+          this.setState({ error: err.message });
+        }
       )
       .then(() => {
         this.setState({ loading: false });
@@ -77,7 +76,6 @@ class Results extends Component {
     const { name, set, type, pageSize, colors } = this.state.query;
     const { history } = this.props;
     history.push({
-      pathname: '/results',
       search: qs.stringify({ page, pageSize, name, set, type, colors })
     });
   };

@@ -13,7 +13,8 @@ export default class Search extends Component {
     type: '',
     set: '',
     colors: [],
-    logic: ''
+    logic: '',
+    colorsControl: ['White', 'Blue', 'Black', 'Red', 'Green']
   };
 
   static propTypes = {
@@ -62,12 +63,10 @@ export default class Search extends Component {
     });
   };
 
-  resetForm = (event) => {
-    event.preventDefault();
-  };
+  resetForm = event => event.preventDefault();
 
   render() {
-    const { name, sets, type } = this.state;
+    const { name, sets, type, colorsControl } = this.state;
 
     return (
       <form className={style.search} onSubmit={event => this.handleSubmit(event)}>
@@ -92,26 +91,12 @@ export default class Search extends Component {
           <legend>Colors:</legend>
           
           <ul>
-            <li>
-              <input type="checkbox" id="white" name="colors" value="white" onChange={this.handleCheck}/>
-              <label htmlFor="white">White</label>
-            </li>
-            <li>
-              <input type="checkbox" id="blue" name="colors" value="blue" onChange={this.handleCheck}/>
-              <label htmlFor="blue">Blue</label>
-            </li>
-            <li>
-              <input type="checkbox" id="black" name="colors" value="black" onChange={this.handleCheck}/>
-              <label htmlFor="black">Black</label>
-            </li>
-            <li>
-              <input type="checkbox" id="red" name="colors" value="red" onChange={this.handleCheck}/>
-              <label htmlFor="red">Red</label>
-            </li>
-            <li>
-              <input type="checkbox" id="green" name="colors" value="green" onChange={this.handleCheck}/>
-              <label htmlFor="green">Green</label>
-            </li>
+            {colorsControl.map(color => (
+              <li  key={color}>
+                <input type="checkbox" id={color} name="colors" value={color} onChange={this.handleCheck}/>
+                <label htmlFor={color}>{color}</label>
+              </li>
+            ))}
           </ul>
 
           <ul>
