@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Paging.css';
-import qs from 'query-string';
 
 export default class Paging extends Component {
 

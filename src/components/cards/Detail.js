@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getCard } from '../../services/mtgApi';
 import { addFavorite, getFavorite, removeFavorite } from '../../services/favoritesApi';
-
+import style from './Detail.css';
 
 class Detail extends Component {
   state = {
@@ -53,15 +53,27 @@ class Detail extends Component {
   render() {
     const { card, favorite } = this.state;
     if(!card) return null;
-    const { name, imageUrl, manaCost } = card;
+    const { name, imageUrl, manaCost, colors, type, rarity, setName, text } = card;
     return (
-      <div>
-        <h2>{name}</h2>
-        <h3>{manaCost}</h3>
-        <img src={imageUrl}/>
-        <button onClick={this.handleClick}>
-          {favorite ? '❌' : '⭐️' }
-        </button>
+      <div className={style.detail} id="detail-view">
+        <section id="detail-image">
+          <img src={imageUrl}/>
+        </section>
+        <section id="detail-text">
+          <h2>Name: {name}</h2>
+          <h3>Mana Cost: {manaCost}</h3>
+          <h4>Colors: {colors}</h4>
+          <h4>Type: {type}</h4>
+          <h4>Rarity: {rarity}</h4>
+          <h4>Set: {setName}</h4>
+          <p>Text: {text}</p>
+          
+        </section>
+        <span>Favorite:
+          <button onClick={this.handleClick}>
+            {favorite ? '❌' : '❤️' }
+          </button>
+        </span>
       </div>
 
     );

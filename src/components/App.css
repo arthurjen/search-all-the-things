@@ -1,18 +1,11 @@
 :local(.app) {
-  header {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    height: 50px;
-    background: blue;
-  }
 
   h1 {
     padding: 5px 20px;
     font-size: 1em;
     color: white;
   }
-  
+
   #nav-bar {
     display: flex;
   }
@@ -31,5 +24,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+  }
+
+  #detail-view {
+    display: grid;
+    grid-template: 1fr 1fr / 30% 1fr;
   }
 }
