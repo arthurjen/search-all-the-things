@@ -3,10 +3,10 @@
 
   #detail-image {
     text-align: center;
-
   }
-  h1 {
-    margin: 10px;
+  
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 10px;
   }
 
   span {
@@ -17,5 +17,5 @@
     border: none;
     margin-left: 5px;
   }
-
+  
 }
